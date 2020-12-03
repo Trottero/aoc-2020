@@ -1,3 +1,4 @@
 {
-    "jupyter.jupyterServerType": "remote"
+    "jupyter.jupyterServerType": "local",
+    "python.pythonPath": "C:\\Users\\Niels\\.virtualenvs\\aoc-2020-Ksc8xuIk\\Scripts\\python.exe"
 }
