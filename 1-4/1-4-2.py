@@ -48,5 +48,5 @@ for instruction in file:
         for adress in adresses:
             memory[adress] = int(r)
 
-sum = sum([memory[key] for key in memory])
+sum = np.sum([memory[key] for key in memory], dtype=np.uint64)
 print(sum)
