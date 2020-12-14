@@ -27,5 +27,5 @@ for instruction in file:
     else:
         memory[l] = mask_n(int(r))
 
-sum = np.sum([memory[key] for key in memory])
+sum = sum([memory[key] for key in memory])
 print(sum)
