@@ -61,18 +61,27 @@ while active_rules:
 print(active_rules)
 
 total = 0
-for message in lines[line_start + 1:]:
-    m = message[0]
-    # Contrsutrct regex where any element of 42 can be repeated
+for i in range(0, 20):
+    for message in lines[line_start + 1:]:
+        m = message[0]
+        # Contrsutrct regex where any element of 42 can be repeated
 
-    rule_42 = expanded_rules['42']
-    rule_31 = expanded_rules['31']
+        rule_42 = expanded_rules['42']
+        rule_31 = expanded_rules['31']
 
-    reg42 = f'{"|".join(rule_42)}'
-    reg31 = f'{"|".join(rule_31)}'
+        reg42 = f'{"|".join(rule_42)}'
+        reg31 = f'{"|".join(rule_31)}'
 
-    regex = f'^({reg42})+({reg31})+$'
-    if re.match(regex, m):
-        total += 1
+        reg42_c = re.findall(reg42, m)
+        if len(reg42_c) < 2:
+            continue
+        last_42 = reg42_c[-1]
+        reg31_c = re.findall(reg31, m)
+        if len(reg42_c) < len(reg31_c):
+            continue
+
+        regex = '^(' + reg42 + '){' + str(i+2) + ',}(' + reg31 + '){' + str(i+1) + '}$'
+        if re.match(regex, m):
+            total += 1
 
 print(total)
